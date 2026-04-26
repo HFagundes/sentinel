@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENTINEL | Centro de Comando</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="background-effects">
+        <div class="grid-overlay"></div>
+        <div class="glow-sphere"></div>
+    </div>
+
+    <main class="dashboard">
+        <header class="main-header">
+            <div class="logo">
+                <span class="logo-icon">◈</span>
+                <h1>SENTINEL<span>.SYS</span></h1>
+            </div>
+            <div class="system-controls">
+                <div class="status-indicator">
+                    <span class="dot pulse"></span>
+                    <span class="status-text">ONLINE</span>
+                </div>
+                <div class="clock" id="current-time">00:00:00</div>
+                <button class="btn-primary" id="open-modal-btn">
+                    <span class="plus-icon">+</span> ADICIONAR SITE
+                </button>
+            </div>
+        </header>
+
+        <button id="theme-toggle" class="btn-icon" title="Alternar Tema">
+            <span class="theme-icon">☼</span>
+        </button>
+
+        <section class="stats-overview">
+            <div class="stat-card">
+                <span class="label">TOTAL MONITORADO</span>
+                <span class="value" id="total-count">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="label">SITES ATIVOS</span>
+                <span class="value" id="active-count">0</span>
+            </div>
+            <div class="stat-card warning">
+                <span class="label">SITES COM INCIDENTES</span>
+                <span class="value" id="incident-count">0</span>
+            </div>
+        </section>
+
+        <section class="monitor-grid" id="monitor-grid">
+            <!-- CARDS INSERIDOS AQUI PELO APP.JS-->
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <p>INICIALIZANDO SITES DE MONITORAMENTO...</p>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <p>&copy; 2026 SENTINEL CENTRO DE COMANDO | CONEXÃO SEGURA ESTABELECIDA</p>
+            <div class="latency-info">LATÊNCIA DE REDE: <span id="global-latency">0ms</span></div>
+        </footer>
+    </main>
+
+    <!-- Modal para adicionar site -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>CONFIGURAR NOVO SITE</h2>
+                <button class="close-btn" id="close-modal-btn">&times;</button>
+            </div>
+            <form id="add-site-form">
+                <div class="form-group">
+                    <label for="site-name">NOME DO SITE</label>
+                    <input type="text" id="site-name" placeholder="Ex: Meu Servidor API" required>
+                </div>
+                <div class="form-group">
+                    <label for="site-url">URL DE DESTINO</label>
+                    <input type="url" id="site-url" placeholder="https://exemplo.com" required>
+                </div>
+                <button type="submit" class="btn-submit">INICIAR MONITORAMENTO</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para o Gráfico de Latência -->
+    <div class="modal-overlay" id="chart-modal-overlay">
+        <div class="modal chart-modal">
+            <div class="modal-header">
+                <div class="site-header-info">
+                    <h2 id="chart-site-name">LATÊNCIA DO SITE</h2>
+                    <span class="site-url" id="chart-site-url">exemplo.com</span>
+                </div>
+                <button class="close-btn" id="close-chart-modal-btn">&times;</button>
+            </div>
+            <div class="chart-container">
+                <canvas id="latency-chart"></canvas>
+            </div>
+            <div class="chart-stats dual-stats">
+                <div class="stats-group">
+                    <span class="group-label app">APP (HTTP)</span>
+                    <div class="stat-grid">
+                        <div class="chart-stat">
+                            <span class="label">PICO</span>
+                            <span class="value" id="peak-latency">0ms</span>
+                        </div>
+                        <div class="chart-stat">
+                            <span class="label">MÉDIA</span>
+                            <span class="value" id="avg-latency">0ms</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-group">
+                    <span class="group-label net">NET (PING)</span>
+                    <div class="stat-grid">
+                        <div class="chart-stat">
+                            <span class="label">PICO</span>
+                            <span class="value" id="peak-ping">0ms</span>
+                        </div>
+                        <div class="chart-stat">
+                            <span class="label">MÉDIA</span>
+                            <span class="value" id="avg-ping">0ms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
