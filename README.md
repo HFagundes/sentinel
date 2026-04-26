@@ -2,7 +2,6 @@
 
 **Sentinel** é um dashboard de monitoramento em tempo real projetado para acompanhar a disponibilidade e a latência de serviços web. Com uma interface futurista e minimalista, ele combina um backend robusto em Python com um frontend dinâmico e responsivo.
 
-![Sentinel Preview](https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/screenshot.png) *(Substitua pela URL da sua imagem após o upload)*
 
 ## 🚀 Funcionalidades
 
