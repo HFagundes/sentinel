@@ -65,9 +65,5 @@ Acesse o dashboard em `http://localhost:8080`.
 └── README.md            # Documentação do projeto
 ```
 
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ---
 Desenvolvido com 💙 por [HFagundes/GitHub]
