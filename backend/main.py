@@ -9,7 +9,7 @@ from contextlib import asynccontextmanager
 from urllib.parse import urlparse
 import re
 
-# Armazenamento global para o cliente HTTP
+# Armazenamento global par o cliente HTTP
 http_client = None
 
 BROWSER_HEADERS = {
@@ -29,7 +29,7 @@ BROWSER_HEADERS = {
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global http_client
-    # Inicializa o cliente com headers de navegador real
+    # Inicializa o cliente com headers d navegador real
     http_client = httpx.AsyncClient(
         headers=BROWSER_HEADERS,
         follow_redirects=True, 
@@ -86,7 +86,7 @@ async def get_ping_latency(url: str):
         output = stdout.decode('cp1252', errors='ignore') # Usando cp1252 para Windows PT-BR
         
         # Regex mais robusto para capturar tempo=Xms ou tempo<1ms (PT-BR ou EN)
-        # Suporta: tempo=26ms, time=26ms, tempo<1ms, time<1ms (com ou sem espaços)
+        # Suporta: tempo26ms, time=26ms, tempo<1ms, time<1ms (com ou sem espaços)
         match = re.search(r'(?:tempo|time)\s*[=<]\s*([\d.]+)\s*ms', output, re.IGNORECASE)
         if match:
             return float(match.group(1))
@@ -121,7 +121,7 @@ async def check_site(name: str, url: str):
             "last_checked": time.strftime("%H:%M:%S")
         }
         
-        # Adiciona ao histórico para o gráfico
+        # Adiciona ao histórico para o grafico
         monitoring_results[name]["history"].append({
             "time": time.strftime("%H:%M:%S"),
             "latency": http_lat,
