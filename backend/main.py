@@ -23,7 +23,7 @@ BROWSER_HEADERS = {
     "Sec-Fetch-Mode": "navigate",
     "Sec-Fetch-Site": "none",
     "Sec-Fetch-User": "?1",
-    "Cache-Control": "max-age=0
+    "Cache-Control": "max-age=0"
 }
 
 @asynccontextmanager
